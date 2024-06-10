@@ -1,17 +1,17 @@
- const http =  require("http");
- const fs = require("fs");
- const myServer = http.createServer((req, res) =>{
- const log =  "${Date.now()}: ${req.url}New  Req Received\n"; 
-   fs.appendFile("log.txt", log, (err, data)=>{
-    switch(req.url){
-        case "/": res.end("HomePage");
-        break
-        case "/about": res.end("I am Abhesh Mandal");
-        break;
-        default: res.end("404 Not Found")
-    }
-    res.end("hello From server again and again");
-   });
- });
- myServer.listen(8000, ()=> console.log("server Started"));
+const http = require("http");
+const express =require("express");
+const app = express();
+app.get("/", (req, res) => {
+  return res.send("Hello From Home Page");
+  r
+});
+app.get("/about",(req, res) =>{
+  return res.send(`hello ${req.query.name}`);
+});
+app.get("/signup", (req, res) =>{
+  return res.end("Hello From signup Page")
+});
+app.listen(8000, () => console.log("Server started at 8000"))
+// const myServer =http.createServer(app);
 
+// myServer.listen(8000, () => console.log("server Started"));
